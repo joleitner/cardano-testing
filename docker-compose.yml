@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  cardano-node:
+    build: .
+    volumes:
+      - cardano-node-data:/data
+      - cardano-node-ipc:/ipc
+
+volumes:
+  cardano-node-data:
+  cardano-node-ipc:
