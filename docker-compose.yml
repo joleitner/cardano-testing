@@ -1,13 +1,33 @@
 version: '3.8'
 services:
-  cardano-node:
-    build: .
-    volumes:
-      - cardano-node-data:/data
-      - cardano-node-ipc:/ipc
-      - ./keys:/usr/keys
-      - ./bin:/scripts
+  # cardano-node:
+  #   build: .
+  #   volumes:
+  #     - cardano-node-data:/data
+  #     - node-ipc:/ipc
+  #     - ./keys:/usr/keys
+  #     - ./bin:/scripts
+
+  node:
+    build: ./node/.
+
+  
+  # cardano-wallet:
+  #   image: inputoutput/cardano-wallet:2022.1.18
+  #   volumes:
+  #     - wallet-db:/wallet-db
+  #     - node-ipc:/ipc
+  #   environment:
+  #     - NETWORK=testnet
+  #   ports:
+  #     - 8090:8090
+  #   entrypoint: []
+  #   command: bash -c "cardano-wallet serve --testnet /config/testnet/genesis-byron.json --node-socket /ipc/node.socket --database /wallet-db --listen-address 0.0.0.0"
+  #   depends_on:
+  #     - cardano-node
+
 
 volumes:
   cardano-node-data:
-  cardano-node-ipc:
+  node-ipc:
+  # wallet-db:
