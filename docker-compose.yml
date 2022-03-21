@@ -6,6 +6,7 @@ services:
       - cardano-node-data:/data
       - cardano-node-ipc:/ipc
       - ./keys:/usr/keys
+      - ./bin:/scripts
 
 volumes:
   cardano-node-data:
