@@ -5,6 +5,7 @@ services:
     volumes:
       - cardano-node-data:/data
       - cardano-node-ipc:/ipc
+      - ./keys:/usr/keys
 
 volumes:
   cardano-node-data:
