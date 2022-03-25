@@ -12,6 +12,7 @@ services:
     build: ./app
     volumes:
       - ./app:/usr/src/app
+      - node-ipc:/ipc
     ports:
       - '3000:3000'
   # cardano-wallet:
