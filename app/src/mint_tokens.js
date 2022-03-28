@@ -3,8 +3,8 @@ const cardano = require("./lib/cardano");
 
 creatorWallet = cardano.wallet("mainWallet")
 
-TOKENNAME = helper.stringToBase16("JoNaS")
-TOKENAMOUNT = 10000
+TOKENNAME = helper.stringToBase16("Lou")
+TOKENAMOUNT = 22
 
 // 1. create policy key pair
 try {
@@ -22,13 +22,16 @@ policy = {
 policyId = cardano.transactionPolicyid(policy)
 
 //3. create raw minting transaction
+let creatorValues = creatorWallet.balance().value
+delete creatorValues.undefined
+
 let txInfo = {
     txIn: creatorWallet.balance().utxo,
     txOut: [
         {
             address: creatorWallet.paymentAddr,
             value: {
-                lovelace: creatorWallet.balance().value.lovelace,
+                ...creatorValues,
                 [policyId + "." + TOKENNAME]: TOKENAMOUNT
             },
         },
